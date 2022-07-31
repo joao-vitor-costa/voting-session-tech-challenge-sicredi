@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  vote_session_manager_mysqldb:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+      MYSQL_USER: root
+      MYSQL_DATABASE: vote_session_manager
+    ports:
+      - 3306:3306
