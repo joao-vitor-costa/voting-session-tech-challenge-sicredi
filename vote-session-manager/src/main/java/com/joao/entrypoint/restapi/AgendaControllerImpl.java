@@ -5,11 +5,11 @@ import com.joao.core.usecase.AgendaUseCase;
 import com.joao.dataprovider.dto.in.AgendaInDTO;
 import com.joao.dataprovider.dto.out.AgendaOutDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping("v1/guidelines")
@@ -29,8 +29,17 @@ public class AgendaControllerImpl implements AgendaController {
     }
 
     @Override
-    @GetMapping("/page")
-    public List<AgendaOutDTO> getAllAgenda() {
-        return null;
+    @GetMapping
+    public Page<AgendaOutDTO> findPage(@RequestParam(value = "page", defaultValue = "0") final Integer page,
+                                       @RequestParam(value = "linesPerPage", defaultValue = "24") final Integer linesPerPage,
+                                       @RequestParam(value = "orderBy", defaultValue = "createdAt") final String orderBy,
+                                       @RequestParam(value = "direction", defaultValue = "DESC") final String direction) {
+        return agendaUseCase.getAllRegisteredGuidelines(page, linesPerPage, orderBy, direction)
+                .map(agendaDomain -> AgendaOutDTO.builder()
+                        .id(agendaDomain.getId())
+                        .title(agendaDomain.getTitle())
+                        .createdAt(agendaDomain.getCreatedAt())
+                        .build());
+
     }
 }

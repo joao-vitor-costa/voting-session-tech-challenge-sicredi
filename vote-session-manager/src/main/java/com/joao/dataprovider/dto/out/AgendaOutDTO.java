@@ -1,13 +1,9 @@
 package com.joao.dataprovider.dto.out;
 
-public record AgendaOutDTO() {
+import lombok.Builder;
 
-    public void newAgenda(){
+import java.time.LocalDateTime;
 
-    }
-
-    public void listOfVotingAgendas(){
-
-    }
-
+@Builder
+public record AgendaOutDTO(Long id, String title, LocalDateTime createdAt) {
 }
