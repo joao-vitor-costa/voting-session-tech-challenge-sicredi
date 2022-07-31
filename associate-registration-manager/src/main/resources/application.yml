@@ -1,0 +1,15 @@
+server.port: 8080
+spring:
+  application:
+    name: associate-registration-manager
+  data:
+    mongodb:
+      uri: mongodb://localhost:37017/associate-registration-manager
+      auto-index-creation: true
+
+spring-doc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /
+    disable-swagger-default-url: true
