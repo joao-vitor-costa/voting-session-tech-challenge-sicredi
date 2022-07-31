@@ -1,0 +1,12 @@
+server.port: 8089
+spring:
+  application:
+    name: vote-session-manager
+
+
+spring-doc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /
+    disable-swagger-default-url: true
