@@ -1,0 +1,17 @@
+version: "3.4"
+services:
+  associate_mongodb:
+    container_name: associate_mongodb
+    image: mongo:3.4
+    restart: always
+    command: mongod --port 37017 --maxConns 10000 --smallfiles
+    volumes:
+      - associate_mongodb:/data/db
+    ports:
+      - 37017:37017
+
+
+volumes:
+  associate_mongodb:
+    driver: "local"
+
