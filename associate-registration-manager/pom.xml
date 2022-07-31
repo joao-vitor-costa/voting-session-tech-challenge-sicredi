@@ -10,14 +10,14 @@
 	</parent>
 	<groupId>com.joao</groupId>
 	<artifactId>associate-registration-manager</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>associate-registration-manager</name>
 	<description>associate registration management</description>
 
 	<properties>
 		<java.version>17</java.version>
-		<org.springdoc>1.6.6</org.springdoc>
-		<org.projectlombok.version>1.18.20</org.projectlombok.version>
+		<org.springdoc>1.6.9</org.springdoc>
+		<org.projectlombok.version>1.18.24</org.projectlombok.version>
 	</properties>
 
 	<dependencies>
