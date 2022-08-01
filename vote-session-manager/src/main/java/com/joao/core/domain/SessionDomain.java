@@ -12,4 +12,6 @@ public class SessionDomain {
     private AgendaDomain agendaDomain;
 
     private LocalDateTime closeDate;
+
+    private LocalDateTime createdAt;
 }

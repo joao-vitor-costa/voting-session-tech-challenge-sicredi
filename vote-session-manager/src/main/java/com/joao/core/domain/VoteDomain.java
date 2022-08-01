@@ -1,6 +1,6 @@
 package com.joao.core.domain;
 
-import com.joao.core.enumeration.VoteDecision;
+import com.joao.core.enumeration.VoteDecisionEnumeration;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -12,7 +12,7 @@ public class VoteDomain {
 
     private String associateId;
 
-    private VoteDecision voteDecision;
+    private VoteDecisionEnumeration voteDecisionEnumeration;
 
     private AgendaDomain agendaDomain;
 }

@@ -1,6 +1,6 @@
 package com.joao.dataprovider.entity;
 
-import com.joao.core.enumeration.VoteDecision;
+import com.joao.core.enumeration.VoteDecisionEnumeration;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,7 +29,7 @@ public class VoteEntity {
 
     @Enumerated
     @Column(name = "vote_decision", nullable = false)
-    private VoteDecision voteDecision;
+    private VoteDecisionEnumeration voteDecisionEnumeration;
 
     @ManyToOne
     @JoinColumn(name = "agenda_entity_id")

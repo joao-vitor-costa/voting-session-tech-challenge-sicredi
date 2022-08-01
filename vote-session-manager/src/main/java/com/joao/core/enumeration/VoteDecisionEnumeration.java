@@ -1,6 +1,6 @@
 package com.joao.core.enumeration;
 
-public enum VoteDecision {
+public enum VoteDecisionEnumeration {
     SIM,
     NAO;
 }
