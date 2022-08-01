@@ -2,6 +2,7 @@ package com.joao.entrypoint.restapi;
 
 import com.joao.dataprovider.dto.in.VoteInDTO;
 import com.joao.dataprovider.dto.out.VoteResultOutDTO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +10,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 
-@RestController("v1/votes")
+@RestController
+@RequestMapping ( "v1/votes" )
+@RequiredArgsConstructor
 public class VoteControllerImpl implements VoteController {
 
     @Override
