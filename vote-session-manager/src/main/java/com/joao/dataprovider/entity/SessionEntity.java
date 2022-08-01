@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.time.LocalDateTime;
 
 @Getter
 @Builder
@@ -24,10 +24,11 @@ public class SessionEntity {
     @JoinColumn(name = "agenda_entity_id", nullable = false)
     private AgendaEntity agendaEntity;
 
-    @OneToMany(mappedBy = "sessionEntity", orphanRemoval = true)
-    private Set<VoteEntity> voteEntities;
+    @Column(name = "close_date", nullable = false)
+    private LocalDateTime closeDate;
 
-    @Column(name = "session_time", nullable = false)
-    private Long sessionTime;
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt;
+
 
 }

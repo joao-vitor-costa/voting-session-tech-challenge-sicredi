@@ -9,8 +9,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
-import java.util.function.Function;
-
 @Component
 @RequiredArgsConstructor
 class AgendaGatewayImpl implements AgendaGateway {
@@ -28,13 +26,13 @@ class AgendaGatewayImpl implements AgendaGateway {
 
     @Override
     public Page<AgendaDomain> findAll(final Pageable pageable) {
-        return agendaRepository.findAll(pageable)
-                .map(agendaEntity -> AgendaDomain.builder()
-                    .id(agendaEntity.getId())
-                    .createdAt(agendaEntity.getCreatedAt())
-                    .description(agendaEntity.getDescription())
-                    .title(agendaEntity.getTitle())
-                    .build()
-                );
+        return agendaRepository.findAll(pageable).map(agendaEntity -> AgendaDomain.builder().id(agendaEntity.getId()).createdAt(agendaEntity.getCreatedAt()).description(agendaEntity.getDescription()).title(agendaEntity.getTitle()).build());
     }
+
+    @Override
+    public AgendaDomain findById(Long id) {
+        return null;
+    }
+
+
 }

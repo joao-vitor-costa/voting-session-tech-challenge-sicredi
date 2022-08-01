@@ -27,9 +27,14 @@ public class AgendaUseCase {
     }
 
     public Page<AgendaDomain> getAllRegisteredGuidelines(final Integer page, final Integer linesPerPage, final String orderBy, final String direction) {
-        log.info("generating pagination\n");
+        log.info("generating pagination");
         PageRequest pageRequest = PageRequest.of(page, linesPerPage, Sort.Direction.valueOf(direction), orderBy);
         log.info("looking for list of agendas");
         return agendaGateway.findAll(pageRequest);
+    }
+
+    public AgendaDomain searchForAnAgenda(final Long id) {
+        log.info("looking for an agenda by id");
+        return agendaGateway.findById(id);
     }
 }

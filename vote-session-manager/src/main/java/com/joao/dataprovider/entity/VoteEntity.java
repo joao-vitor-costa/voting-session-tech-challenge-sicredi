@@ -20,9 +20,6 @@ public class VoteEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
     private Long id;
-    @ManyToOne
-    @JoinColumn(name = "session_entity_id", nullable = false)
-    private SessionEntity sessionEntity;
 
     @Column(name = "associate_id", unique = true, nullable = false)
     private String associateId;
@@ -33,5 +30,9 @@ public class VoteEntity {
     @Enumerated
     @Column(name = "vote_decision", nullable = false)
     private VoteDecision voteDecision;
+
+    @ManyToOne
+    @JoinColumn(name = "agenda_entity_id")
+    private AgendaEntity agendaEntity;
 
 }
