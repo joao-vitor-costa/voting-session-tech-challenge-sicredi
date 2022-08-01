@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@RestController("v1/associates")
+@RestController
+@RequestMapping("v1/associates")
 @RequiredArgsConstructor
 public class AssociateControllerImpl implements AssociateController {
 
