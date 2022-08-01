@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@RestController
-@RequestMapping("v1/guidelines")
+@RestController("v1/guidelines")
 @RequiredArgsConstructor
 public class AgendaControllerImpl implements AgendaController {
 
@@ -30,6 +29,7 @@ public class AgendaControllerImpl implements AgendaController {
 
     @Override
     @GetMapping
+    @ResponseStatus(HttpStatus.OK)
     public Page<AgendaOutDTO> findPage(@RequestParam(value = "page", defaultValue = "0") final Integer page,
                                        @RequestParam(value = "linesPerPage", defaultValue = "24") final Integer linesPerPage,
                                        @RequestParam(value = "orderBy", defaultValue = "createdAt") final String orderBy,

@@ -17,4 +17,6 @@ public class AgendaDomain {
 
     private LocalDateTime createdAt;
 
+    private SessionDomain sessionDomain;
+
 }

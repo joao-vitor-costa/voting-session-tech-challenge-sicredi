@@ -29,4 +29,8 @@ public class AgendaEntity {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
+    @OneToOne(orphanRemoval = true)
+    @JoinColumn(name = "session_entity_id")
+    private SessionEntity sessionEntity;
+
 }
