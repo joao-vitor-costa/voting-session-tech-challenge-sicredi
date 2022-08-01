@@ -1,6 +1,6 @@
 package com.joao.entrypoint.restapi;
 
-import com.joao.dataprovider.dto.in.OpenVotingSessionInDTO;
+import com.joao.dataprovider.dto.OpenVotingSessionInDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;

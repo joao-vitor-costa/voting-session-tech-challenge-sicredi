@@ -1,6 +1,7 @@
 package com.joao.core.usecase;
 
 import com.joao.core.domain.AgendaDomain;
+import com.joao.core.exception.NotFoundException;
 import com.joao.core.gateway.AgendaGateway;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +11,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
+
+import static com.joao.core.enumeration.ExceptionCode.AGENDA_NOT_FOUND;
 
 @Component
 @RequiredArgsConstructor
@@ -35,6 +39,10 @@ public class AgendaUseCase {
 
     public AgendaDomain searchForAnAgenda(final Long id) {
         log.info("looking for an agenda by id");
-        return agendaGateway.findById(id);
+        return agendaGateway.findById(id)
+                .stream()
+                .filter(Objects::nonNull)
+                .findFirst()
+                .orElseThrow(() -> new NotFoundException(AGENDA_NOT_FOUND));
     }
 }

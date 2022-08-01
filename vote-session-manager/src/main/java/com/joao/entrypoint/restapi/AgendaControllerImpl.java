@@ -1,9 +1,9 @@
 package com.joao.entrypoint.restapi;
 
-import com.joao.core.domain.AgendaDomain;
 import com.joao.core.usecase.AgendaUseCase;
-import com.joao.dataprovider.dto.in.AgendaInDTO;
-import com.joao.dataprovider.dto.out.AgendaOutDTO;
+import com.joao.dataprovider.dto.AgendaInDTO;
+import com.joao.dataprovider.dto.AgendaOutDTO;
+import com.joao.dataprovider.mapper.AgendaMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -11,20 +11,19 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@RestController("v1/guidelines")
+@RestController
+@RequestMapping ( "v1/agendas" )
 @RequiredArgsConstructor
 public class AgendaControllerImpl implements AgendaController {
 
     private final AgendaUseCase agendaUseCase;
+    private final AgendaMapper agendaMapper;
 
     @Override
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody @Valid final AgendaInDTO agendaInDTO) {
-        agendaUseCase.newAgenda(AgendaDomain.builder()
-                .title(agendaInDTO.title())
-                .description(agendaInDTO.description())
-                .build());
+        agendaUseCase.newAgenda(agendaMapper.toDomain(agendaInDTO));
     }
 
     @Override
@@ -35,11 +34,7 @@ public class AgendaControllerImpl implements AgendaController {
                                        @RequestParam(value = "orderBy", defaultValue = "createdAt") final String orderBy,
                                        @RequestParam(value = "direction", defaultValue = "DESC") final String direction) {
         return agendaUseCase.getAllRegisteredGuidelines(page, linesPerPage, orderBy, direction)
-                .map(agendaDomain -> AgendaOutDTO.builder()
-                        .id(agendaDomain.getId())
-                        .title(agendaDomain.getTitle())
-                        .createdAt(agendaDomain.getCreatedAt())
-                        .build());
+                .map(agendaMapper::toDTO);
 
     }
 }
