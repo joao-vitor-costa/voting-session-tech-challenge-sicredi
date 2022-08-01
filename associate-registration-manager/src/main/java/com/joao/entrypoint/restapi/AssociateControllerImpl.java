@@ -1,6 +1,5 @@
 package com.joao.entrypoint.restapi;
 
-import com.joao.core.domain.AssociateDomain;
 import com.joao.core.usecase.RegistrationManagerUseCase;
 import com.joao.dataprovider.dto.AssociateInDTO;
 import com.joao.dataprovider.dto.AssociateOutDTO;
@@ -11,8 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@RestController
-@RequestMapping("v1/associates")
+@RestController("v1/associates")
 @RequiredArgsConstructor
 public class AssociateControllerImpl implements AssociateController {
 
