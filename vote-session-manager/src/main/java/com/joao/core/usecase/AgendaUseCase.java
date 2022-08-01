@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-import static com.joao.core.enumeration.ExceptionCode.AGENDA_NOT_FOUND;
+import static com.joao.core.enumeration.ExceptionCodeEnumeration.AGENDA_NOT_FOUND;
 
 @Component
 @RequiredArgsConstructor
