@@ -1,8 +1,8 @@
 package com.joao.dataprovider.mapper;
 
 import com.joao.core.domain.AgendaDomain;
-import com.joao.dataprovider.dto.in.AgendaInDTO;
-import com.joao.dataprovider.dto.out.AgendaOutDTO;
+import com.joao.dataprovider.dto.AgendaInDTO;
+import com.joao.dataprovider.dto.AgendaOutDTO;
 import com.joao.dataprovider.entity.AgendaEntity;
 import org.mapstruct.Mapper;
 

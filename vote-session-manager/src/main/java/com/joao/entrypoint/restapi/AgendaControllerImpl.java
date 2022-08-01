@@ -1,8 +1,8 @@
 package com.joao.entrypoint.restapi;
 
 import com.joao.core.usecase.AgendaUseCase;
-import com.joao.dataprovider.dto.in.AgendaInDTO;
-import com.joao.dataprovider.dto.out.AgendaOutDTO;
+import com.joao.dataprovider.dto.AgendaInDTO;
+import com.joao.dataprovider.dto.AgendaOutDTO;
 import com.joao.dataprovider.mapper.AgendaMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

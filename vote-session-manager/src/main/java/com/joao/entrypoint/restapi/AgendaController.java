@@ -1,7 +1,7 @@
 package com.joao.entrypoint.restapi;
 
-import com.joao.dataprovider.dto.in.AgendaInDTO;
-import com.joao.dataprovider.dto.out.AgendaOutDTO;
+import com.joao.dataprovider.dto.AgendaInDTO;
+import com.joao.dataprovider.dto.AgendaOutDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;

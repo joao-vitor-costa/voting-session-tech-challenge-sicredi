@@ -1,7 +1,7 @@
 package com.joao.entrypoint.config;
 
 import com.joao.core.exception.NotFoundException;
-import com.joao.dataprovider.dto.StandardError;
+import com.joao.dataprovider.dto.StandardErrorOutDTO;
 import com.mongodb.MongoWriteException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,15 +14,15 @@ import javax.servlet.http.HttpServletRequest;
 public class ExceptionHandlerController {
 
     @ExceptionHandler(MongoWriteException.class)
-    public ResponseEntity<StandardError> mongoWrite(MongoWriteException exception, HttpServletRequest request) {
-        StandardError standardError = new StandardError(System.currentTimeMillis(), HttpStatus.INTERNAL_SERVER_ERROR.value(),
+    public ResponseEntity<StandardErrorOutDTO> mongoWrite(MongoWriteException exception, HttpServletRequest request) {
+        StandardErrorOutDTO standardErrorOutDTO = new StandardErrorOutDTO(System.currentTimeMillis(), HttpStatus.INTERNAL_SERVER_ERROR.value(),
                 Integer.toString(exception.getError().getCode()), exception.getMessage(), request.getRequestURI(), request.getMethod());
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(standardError);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(standardErrorOutDTO);
     }
 
     @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<StandardError> notFound(NotFoundException exception, HttpServletRequest request) {
-        final var standardError = new StandardError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(),
+    public ResponseEntity<StandardErrorOutDTO> notFound(NotFoundException exception, HttpServletRequest request) {
+        final var standardError = new StandardErrorOutDTO(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(),
                 exception.getErrorCode(), exception.getMessage(), request.getRequestURI(), request.getMethod());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(standardError);
     }

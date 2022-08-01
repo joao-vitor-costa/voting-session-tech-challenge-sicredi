@@ -3,7 +3,7 @@ package com.joao.core.exception;
 import com.joao.core.enumeration.ExceptionCode;
 import lombok.Getter;
 
-public class NotFoundException  extends RuntimeException {
+public class NotFoundException extends RuntimeException {
     @Getter
     private final String errorCode;
 

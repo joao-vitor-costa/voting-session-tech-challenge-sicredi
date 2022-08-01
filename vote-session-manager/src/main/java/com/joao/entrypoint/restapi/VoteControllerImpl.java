@@ -1,7 +1,7 @@
 package com.joao.entrypoint.restapi;
 
-import com.joao.dataprovider.dto.in.VoteInDTO;
-import com.joao.dataprovider.dto.out.VoteResultOutDTO;
+import com.joao.dataprovider.dto.VoteInDTO;
+import com.joao.dataprovider.dto.VoteResultOutDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

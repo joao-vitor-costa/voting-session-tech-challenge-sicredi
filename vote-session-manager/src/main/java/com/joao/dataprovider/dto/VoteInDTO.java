@@ -1,4 +1,4 @@
-package com.joao.dataprovider.dto.in;
+package com.joao.dataprovider.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

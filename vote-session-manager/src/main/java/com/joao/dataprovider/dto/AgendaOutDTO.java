@@ -1,4 +1,4 @@
-package com.joao.dataprovider.dto.out;
+package com.joao.dataprovider.dto;
 
 import java.time.LocalDateTime;
 

@@ -1,7 +1,7 @@
 package com.joao.entrypoint.restapi;
 
-import com.joao.dataprovider.dto.in.VoteInDTO;
-import com.joao.dataprovider.dto.out.VoteResultOutDTO;
+import com.joao.dataprovider.dto.VoteInDTO;
+import com.joao.dataprovider.dto.VoteResultOutDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;

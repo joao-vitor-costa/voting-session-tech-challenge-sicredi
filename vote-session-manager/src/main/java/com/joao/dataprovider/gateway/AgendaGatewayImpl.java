@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 @RequiredArgsConstructor
 class AgendaGatewayImpl implements AgendaGateway {
@@ -28,8 +30,10 @@ class AgendaGatewayImpl implements AgendaGateway {
     }
 
     @Override
-    public AgendaDomain findById(Long id) {
-        return null;
+    public Optional<AgendaDomain> findById(Long id) {
+        return agendaRepository.findById(id)
+                .map(agendaMapper::toDomain);
+
     }
 
 
