@@ -1,21 +1,15 @@
 package com.joao.core.domain;
 
-import com.joao.dataprovider.entity.AgendaEntity;
-import com.joao.dataprovider.entity.VoteEntity;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.util.Set;
+import java.time.LocalDateTime;
 
 @Builder
 @Getter
 public class SessionDomain {
 
-    private Long id;
+    private AgendaDomain agendaDomain;
 
-    private AgendaEntity agendaEntity;
-
-    private Set<VoteEntity> voteEntities;
-
-    private Long sessionTime;
+    private LocalDateTime closeDate;
 }

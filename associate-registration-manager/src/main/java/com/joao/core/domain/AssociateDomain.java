@@ -1,12 +1,11 @@
 package com.joao.core.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
-@Builder
+
 @Getter
+@Builder
 public class AssociateDomain {
 
     private String id;

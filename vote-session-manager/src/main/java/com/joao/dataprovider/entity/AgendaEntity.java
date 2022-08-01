@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Getter
 @Builder
@@ -33,4 +34,8 @@ public class AgendaEntity {
     @JoinColumn(name = "session_entity_id")
     private SessionEntity sessionEntity;
 
+    @OneToMany(mappedBy = "agendaEntity", orphanRemoval = true)
+    private Set<VoteEntity> voteEntities;
+
 }
+
