@@ -5,14 +5,17 @@ import com.joao.dataprovider.dto.AgendaInDTO;
 import com.joao.dataprovider.dto.AgendaOutDTO;
 import com.joao.dataprovider.entity.AgendaEntity;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 @Mapper ( componentModel = "spring" )
 public interface AgendaMapper {
-    AgendaDomain toDomain(final AgendaInDTO agendaInDTO);
+    AgendaDomain toDomain(AgendaInDTO agendaInDTO);
 
-    AgendaOutDTO toDTO(final AgendaDomain agendaDomain);
+    AgendaOutDTO toDTO(AgendaDomain agendaDomain);
 
-    AgendaEntity ToEntity(final AgendaDomain agendaDomain);
+    @Mapping ( target = "sessionEntity", source = "sessionDomain" )
+    AgendaEntity ToEntity(AgendaDomain agendaDomain);
 
-    AgendaDomain toDomain(final AgendaEntity agendaEntity);
+    @Mapping ( target = "sessionDomain", source = "sessionEntity" )
+    AgendaDomain toDomain(AgendaEntity agendaEntity);
 }

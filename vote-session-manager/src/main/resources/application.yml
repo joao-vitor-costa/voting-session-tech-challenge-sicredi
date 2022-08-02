@@ -11,10 +11,11 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
-      ddl-auto: create
-      format_sql: true
+      ddl-auto: none
     show-sql: true
+    open-in-view: false
 
 spring-doc:
   api-docs:
@@ -22,3 +23,19 @@ spring-doc:
   swagger-ui:
     path: /
     disable-swagger-default-url: true
+
+associate:
+  url: http://localhost:8080/v1/associates
+user-info:
+  url: https://user-info.herokuapp.com/users
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+
+
+

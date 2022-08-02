@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface AgendaGateway {
 
-    void create(AgendaDomain agendaDomain);
+    void save(AgendaDomain agendaDomain);
 
     Page<AgendaDomain> findAll(Pageable pageable);
 

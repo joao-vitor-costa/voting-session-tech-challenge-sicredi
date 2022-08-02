@@ -6,5 +6,8 @@ import org.mapstruct.Mapper;
 
 @Mapper ( componentModel = "spring" )
 public interface SessionMapper {
-    SessionEntity toEntity(final SessionDomain sessionDomain);
+
+    SessionEntity toEntity(SessionDomain sessionDomain);
+
+    SessionDomain toDomain(SessionEntity sessionEntity);
 }

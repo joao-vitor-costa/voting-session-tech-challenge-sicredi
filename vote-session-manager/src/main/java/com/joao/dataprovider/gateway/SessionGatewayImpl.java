@@ -9,13 +9,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-class SessionGatewayimpl implements SessionGateway {
-
+class SessionGatewayImpl implements SessionGateway {
     private final SessionRepository sessionRepository;
     private final SessionMapper sessionMapper;
 
     @Override
-    public void create(SessionDomain sessionDomain) {
-        sessionRepository.save(sessionMapper.toEntity(sessionDomain));
+    public SessionDomain save(SessionDomain sessionDomain) {
+        return sessionMapper.toDomain(sessionRepository.save(sessionMapper.toEntity(sessionDomain)));
     }
 }

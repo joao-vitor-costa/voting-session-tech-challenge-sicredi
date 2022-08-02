@@ -19,7 +19,7 @@ class AgendaGatewayImpl implements AgendaGateway {
     private final AgendaMapper agendaMapper;
 
     @Override
-    public void create(AgendaDomain agendaDomain) {
+    public void save(AgendaDomain agendaDomain) {
         agendaRepository.save(agendaMapper.ToEntity(agendaDomain));
     }
 

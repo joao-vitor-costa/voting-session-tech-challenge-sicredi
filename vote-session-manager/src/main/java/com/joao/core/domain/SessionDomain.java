@@ -8,10 +8,12 @@ import java.time.LocalDateTime;
 @Builder
 @Getter
 public class SessionDomain {
-
-    private AgendaDomain agendaDomain;
-
+    private Long id;
     private LocalDateTime closeDate;
 
     private LocalDateTime createdAt;
+
+    public boolean isCloseSession() {
+        return this.closeDate.isAfter(LocalDateTime.now());
+    }
 }

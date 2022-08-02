@@ -32,7 +32,7 @@ public class VoteEntity {
     private VoteDecisionEnumeration voteDecisionEnumeration;
 
     @ManyToOne
-    @JoinColumn(name = "agenda_entity_id")
+    @JoinColumn ( name = "agenda_entity_id" )
     private AgendaEntity agendaEntity;
 
 }

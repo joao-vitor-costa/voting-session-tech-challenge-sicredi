@@ -20,10 +20,6 @@ public class SessionEntity {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @OneToOne(orphanRemoval = true)
-    @JoinColumn(name = "agenda_entity_id", nullable = false)
-    private AgendaEntity agendaEntity;
-
     @Column(name = "close_date", nullable = false)
     private LocalDateTime closeDate;
 

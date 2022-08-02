@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Getter
@@ -30,12 +31,9 @@ public class AgendaEntity {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
-    @OneToOne(orphanRemoval = true)
-    @JoinColumn(name = "session_entity_id")
+    @OneToOne ( orphanRemoval = true )
+    @JoinColumn ( name = "session_entity_id" )
     private SessionEntity sessionEntity;
-
-    @OneToMany(mappedBy = "agendaEntity", orphanRemoval = true)
-    private Set<VoteEntity> voteEntities;
 
 }
 

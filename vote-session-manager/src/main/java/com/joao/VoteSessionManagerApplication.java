@@ -2,12 +2,14 @@ package com.joao;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 import javax.annotation.PostConstruct;
 import java.util.Locale;
 import java.util.TimeZone;
 
-@SpringBootApplication(scanBasePackages = "com.joao")
+@SpringBootApplication ( scanBasePackages = "com.joao" )
+@EnableFeignClients
 public class VoteSessionManagerApplication {
 
 	public static void main(String[] args) {

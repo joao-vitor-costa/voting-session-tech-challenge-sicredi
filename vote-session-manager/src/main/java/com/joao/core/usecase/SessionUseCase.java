@@ -2,6 +2,7 @@ package com.joao.core.usecase;
 
 import com.joao.core.domain.AgendaDomain;
 import com.joao.core.domain.SessionDomain;
+import com.joao.core.exception.CloseSessionException;
 import com.joao.core.exception.OpenSessionException;
 import com.joao.core.gateway.SessionGateway;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 import static com.joao.core.enumeration.ExceptionCodeEnumeration.AGENDA_ALREADY_HAS_A_SESSION;
+import static com.joao.core.enumeration.ExceptionCodeEnumeration.SESSION_CLOSED_FOR_VOTING;
 
 @Component
 @Slf4j
@@ -31,14 +33,20 @@ public class SessionUseCase {
         log.info("valid agenda to have a voting session");
         final var closeDate = generateCloseDate(sessionTime);
         final var sessionDomain = SessionDomain.builder()
-                .agendaDomain(agendaDomain)
                 .createdAt(LocalDateTime.now())
                 .closeDate(closeDate)
                 .build();
         log.info("creating session for voting on the agenda");
-        sessionGateway.create(sessionDomain);
+        final var sessionCreated = sessionGateway.save(sessionDomain);
+        agendaUseCase.addSession(agendaDomain, sessionCreated);
         log.info("voting session created successfully");
 
+    }
+
+    public void validateIfAgendaIsOpenSession(final SessionDomain sessionDomain) {
+        if (!sessionDomain.isCloseSession()) {
+            throw new CloseSessionException(SESSION_CLOSED_FOR_VOTING);
+        }
     }
 
     private LocalDateTime generateCloseDate(final Long sessionTime) {

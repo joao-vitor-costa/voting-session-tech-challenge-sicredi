@@ -21,7 +21,7 @@ public interface AgendaController {
     void create(AgendaInDTO agendaInDTO);
 
     @Operation(summary = "returns a list of registered staves")
-    @Parameter(name = "page", in = QUERY, description = "identify which page you want", example = "1")
+    @Parameter(name = "page", in = QUERY, description = "identify which page you want", example = "0")
     @Parameter(name = "linesPerPage", in = QUERY, description = "how many lines per page", example = "24")
     @Parameter(name = "orderBy", in = QUERY, description = "which attribute will sort", example = "createdAt")
     @Parameter(name = "direction", in = QUERY, description = "whichever direction is in ASC or DESC order", example = "DESC")
