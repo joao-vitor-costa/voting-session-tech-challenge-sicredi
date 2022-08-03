@@ -38,5 +38,5 @@ Por padrão a aplicação não está com a configuração de configuração de c
 Acesse em um browser o [swagger-ui](http://localhost:8089/swagger-ui/index.html)
 
 ## Health Check
-Acesse em um browser o [actuator/health](http://localhost:8089/actuator/health)
+Acesse em um browser o [health](http://localhost:8089/actuator/health)
 
