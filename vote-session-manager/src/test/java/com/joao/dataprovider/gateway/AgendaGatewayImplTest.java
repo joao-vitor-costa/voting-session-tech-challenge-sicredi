@@ -15,6 +15,7 @@ import org.springframework.data.domain.Sort;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.mockito.Mockito.*;
 
@@ -46,13 +47,14 @@ class AgendaGatewayImplTest {
 
     @Test
     void search_for_a_staff_by_id() {
-        final var agendaDomain = AgendaDomain.builder().id(1L).build();
-        var agendaEntity = new AgendaEntity(1L, null, null, null, null);
+        final var agendaId = UUID.randomUUID();
+        final var agendaDomain = AgendaDomain.builder().id(agendaId).build();
+        var agendaEntity = new AgendaEntity(agendaId, null, null, null, null);
 
         when(agendaMapper.toDomain(agendaEntity)).thenReturn(agendaDomain);
-        when(agendaRepository.findById(1L)).thenReturn(Optional.of(agendaEntity));
+        when(agendaRepository.findById(agendaId)).thenReturn(Optional.of(agendaEntity));
 
-        agendaGateway.findById(1L);
+        agendaGateway.findById(agendaId);
 
         verify(agendaRepository).findById(anyLong());
         verify(agendaMapper).toDomain(any(AgendaEntity.class));

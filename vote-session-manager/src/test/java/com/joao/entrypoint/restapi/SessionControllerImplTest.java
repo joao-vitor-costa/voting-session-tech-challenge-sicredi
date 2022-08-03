@@ -13,6 +13,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.UUID;
+
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -33,7 +35,7 @@ class SessionControllerImplTest {
 
     @Test
     void should_open_voting_session() throws Exception {
-        var openVotingSessionInDTO = new OpenVotingSessionInDTO(1L, 10L);
+        var openVotingSessionInDTO = new OpenVotingSessionInDTO(UUID.randomUUID(), 10L);
         mockMvc.perform(post("/v1/sessions")
                         .contentType(APPLICATION_JSON_VALUE)
                         .content(objectMapper.writeValueAsString(openVotingSessionInDTO)))

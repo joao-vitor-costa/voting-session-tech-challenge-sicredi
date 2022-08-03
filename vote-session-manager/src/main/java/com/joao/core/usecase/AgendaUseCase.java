@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.UUID;
 
 import static com.joao.core.enumeration.ExceptionCodeEnumeration.AGENDA_NOT_FOUND;
 import static com.joao.core.enumeration.ExceptionCodeEnumeration.SESSION_NOT_CREATED;
@@ -48,7 +49,7 @@ public class AgendaUseCase {
         return agendaGateway.findAll(pageRequest);
     }
 
-    public AgendaDomain searchForAnAgenda(final Long id) {
+    public AgendaDomain searchForAnAgenda(final UUID id) {
         log.info("looking for an agenda by id");
         return agendaGateway.findById(id)
                 .stream()

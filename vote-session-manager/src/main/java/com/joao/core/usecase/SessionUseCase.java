@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.UUID;
 
 import static com.joao.core.enumeration.ExceptionCodeEnumeration.*;
 
@@ -24,7 +25,7 @@ public class SessionUseCase {
     private final AgendaUseCase agendaUseCase;
     private final SessionGateway sessionGateway;
 
-    public void openAVotingSessionOnAnAgenda(final Long agendaId, final Long sessionTime) {
+    public void openAVotingSessionOnAnAgenda(final UUID agendaId, final Long sessionTime) {
         log.info("looking for agenda to open the session");
         final var agendaDomain = agendaUseCase.searchForAnAgenda(agendaId);
         log.info("validating if the agenda already has a session");

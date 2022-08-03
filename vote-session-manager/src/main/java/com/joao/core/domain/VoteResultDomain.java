@@ -4,6 +4,8 @@ import com.joao.core.enumeration.VoteResultEnumeration;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.util.UUID;
+
 @Getter
 @Builder
 public class VoteResultDomain {
@@ -11,7 +13,7 @@ public class VoteResultDomain {
     private Long totalNo;
     private Long totalYes;
     private VoteResultEnumeration voteResultEnumeration;
-    private Long agendaId;
+    private UUID agendaId;
     private String title;
     private String description;
 }

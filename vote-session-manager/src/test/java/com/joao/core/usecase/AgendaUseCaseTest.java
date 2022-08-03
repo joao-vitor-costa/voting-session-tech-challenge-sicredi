@@ -16,12 +16,12 @@ import org.springframework.data.domain.Sort;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import static com.joao.core.enumeration.ExceptionCodeEnumeration.AGENDA_NOT_FOUND;
 import static com.joao.core.enumeration.ExceptionCodeEnumeration.SESSION_NOT_CREATED;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -51,7 +51,7 @@ class AgendaUseCaseTest {
     @Test
     void must_get_all_registered_guidelines() {
         final var pageRequest = PageRequest.of(1, 2, Sort.Direction.valueOf("ASC"), "createdAt");
-        final var agendaDomains = List.of(AgendaDomain.builder().id(1L).build());
+        final var agendaDomains = List.of(AgendaDomain.builder().id(UUID.randomUUID()).build());
         final var pagedAgenda = new PageImpl(agendaDomains, pageRequest, 1L);
 
         when(agendaGateway.findAll(pageRequest)).thenReturn(pagedAgenda);
@@ -64,7 +64,7 @@ class AgendaUseCaseTest {
 
     @Test
     void must_search_for_an_agenda() {
-        final var agendaId = 1L;
+        final var agendaId = UUID.randomUUID();
         final var agendaDomain = AgendaDomain.builder().id(agendaId).build();
 
         when(agendaGateway.findById(agendaId)).thenReturn(Optional.of(agendaDomain));
@@ -76,14 +76,14 @@ class AgendaUseCaseTest {
 
     @Test
     void should_give_an_error_when_looking_for_a_schedule_when_it_finds_the_schedule() {
-        final var agendaId = 1L;
+        final var agendaId = UUID.randomUUID();
 
         when(agendaGateway.findById(agendaId)).thenReturn(Optional.empty());
 
         final var exception = assertThrows(NotFoundException.class, () -> agendaUseCase.searchForAnAgenda(agendaId));
 
         assertEquals(AGENDA_NOT_FOUND.message, exception.getMessage());
-        verify(agendaGateway).findById(anyLong());
+        verify(agendaGateway).findById(any());
     }
 
     @Test

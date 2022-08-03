@@ -27,6 +27,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -60,10 +61,12 @@ class VoteGatewayImplTest {
 
     @Test
     void must_save_vote() {
-        final var agendaDomain = generateAgendaDomain();
-        final var voteDomain = generateVoteDomain(agendaDomain);
-        final var agendaEntity = generateAgendaEntity();
-        final var voteEntity = generateVoteEntity(agendaEntity);
+        final var agendaId = UUID.randomUUID();
+        final var voteId = UUID.randomUUID();
+        final var agendaDomain = generateAgendaDomain(agendaId);
+        final var voteDomain = generateVoteDomain(agendaDomain, voteId);
+        final var agendaEntity = generateAgendaEntity(agendaId);
+        final var voteEntity = generateVoteEntity(agendaEntity, voteId);
 
         when(voteMapper.toEntity(voteDomain)).thenReturn(voteEntity);
 
@@ -75,10 +78,12 @@ class VoteGatewayImplTest {
 
     @Test
     void must_find_by_agenda() {
-        final var agendaDomain = generateAgendaDomain();
-        final var voteDomain = generateVoteDomain(agendaDomain);
-        final var agendaEntity = generateAgendaEntity();
-        final var voteEntity = generateVoteEntity(agendaEntity);
+        final var agendaId = UUID.randomUUID();
+        final var voteId = UUID.randomUUID();
+        final var agendaDomain = generateAgendaDomain(agendaId);
+        final var voteDomain = generateVoteDomain(agendaDomain, voteId);
+        final var agendaEntity = generateAgendaEntity(agendaId);
+        final var voteEntity = generateVoteEntity(agendaEntity, voteId);
         final var votes = List.of(voteEntity);
 
         when(agendaMapper.toEntity(agendaDomain)).thenReturn(agendaEntity);
@@ -94,10 +99,12 @@ class VoteGatewayImplTest {
 
     @Test
     void must_get_the_result_of_the_vote() {
-        final var agendaDomain = generateAgendaDomain();
-        final var voteDomain = generateVoteDomain(agendaDomain);
-        final var agendaEntity = generateAgendaEntity();
-        final var voteEntity = generateVoteEntity(agendaEntity);
+        final var agendaId = UUID.randomUUID();
+        final var voteId = UUID.randomUUID();
+        final var agendaDomain = generateAgendaDomain(agendaId);
+        final var voteDomain = generateVoteDomain(agendaDomain, voteId);
+        final var agendaEntity = generateAgendaEntity(agendaId);
+        final var voteEntity = generateVoteEntity(agendaEntity, voteId);
         final var votes = List.of(voteEntity);
 
         when(agendaMapper.toEntity(agendaDomain)).thenReturn(agendaEntity);
@@ -114,19 +121,19 @@ class VoteGatewayImplTest {
 
     }
 
-    private AgendaDomain generateAgendaDomain() {
+    private AgendaDomain generateAgendaDomain(final UUID id) {
         return AgendaDomain.builder()
-                .id(1L)
+                .id(id)
                 .title("Lorem")
                 .description("Lorem")
                 .createdAt(LocalDateTime.now())
-                .sessionDomain(SessionDomain.builder().id(1L).build())
+                .sessionDomain(SessionDomain.builder().id(id).build())
                 .build();
     }
 
-    private VoteDomain generateVoteDomain(final AgendaDomain agendaDomain) {
+    private VoteDomain generateVoteDomain(final AgendaDomain agendaDomain, UUID id) {
         return VoteDomain.builder()
-                .id(1L)
+                .id(id)
                 .associateId("34567890")
                 .agendaDomain(agendaDomain)
                 .voteDecisionEnumeration(VoteDecisionEnumeration.SIM)
@@ -134,19 +141,19 @@ class VoteGatewayImplTest {
                 .build();
     }
 
-    private AgendaEntity generateAgendaEntity() {
+    private AgendaEntity generateAgendaEntity(UUID id) {
         return AgendaEntity.builder()
-                .id(1L)
+                .id(id)
                 .title("Lorem")
                 .description("Lorem")
                 .createdAt(LocalDateTime.now())
-                .sessionEntity(SessionEntity.builder().id(1L).build())
+                .sessionEntity(SessionEntity.builder().id(id).build())
                 .build();
     }
 
-    private VoteEntity generateVoteEntity(final AgendaEntity agendaEntity) {
+    private VoteEntity generateVoteEntity(final AgendaEntity agendaEntity, UUID id) {
         return VoteEntity.builder()
-                .id(1L)
+                .id(id)
                 .associateId("34567890")
                 .agendaEntity(agendaEntity)
                 .voteDecisionEnumeration(VoteDecisionEnumeration.SIM)

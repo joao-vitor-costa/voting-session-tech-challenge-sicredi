@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import static com.joao.core.enumeration.ExceptionCodeEnumeration.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -33,9 +34,9 @@ class SessionUseCaseTest {
 
     @Test
     void should_not_open_a_session_when_a_schedule_already_has_a_session() {
-        final var agendaId = 1L;
+        final var agendaId = UUID.randomUUID();
         final var sessionTime = 1L;
-        final var agendaDomain = AgendaDomain.builder().id(agendaId).sessionDomain(SessionDomain.builder().id(anyLong()).build()).build();
+        final var agendaDomain = AgendaDomain.builder().id(agendaId).sessionDomain(SessionDomain.builder().id(UUID.randomUUID()).build()).build();
 
         when(agendaUseCase.searchForAnAgenda(agendaId)).thenReturn(agendaDomain);
 
@@ -43,12 +44,12 @@ class SessionUseCaseTest {
 
         assertEquals(AGENDA_ALREADY_HAS_A_SESSION.message, exception.getMessage());
 
-        verify(agendaUseCase).searchForAnAgenda(anyLong());
+        verify(agendaUseCase).searchForAnAgenda(any());
     }
 
     @Test
     void must_open_a_session_when_a_schedule_does_not_have_a_session_created() {
-        final var agendaId = 1L;
+        final var agendaId = UUID.randomUUID();
         final var sessionTime = 1L;
         final var agendaDomain = AgendaDomain.builder().id(agendaId).build();
         final var sessionCreated = SessionDomain.builder().build();

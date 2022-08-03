@@ -4,9 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Getter
 @Builder
@@ -16,9 +19,10 @@ import java.time.LocalDateTime;
 @Table(name = "session")
 public class SessionEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @Type (type = "uuid-char")
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator (name = "uuid2", strategy = "uuid2")
+    private UUID id;
 
     @Column(name = "close_date", nullable = false)
     private LocalDateTime closeDate;

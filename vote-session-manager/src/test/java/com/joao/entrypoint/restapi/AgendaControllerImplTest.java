@@ -16,6 +16,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
+import java.util.UUID;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
@@ -53,7 +54,7 @@ class AgendaControllerImplTest {
 
     @Test
     void must_list_the_guidelines() throws Exception {
-        final var agendaDomain = AgendaDomain.builder().id(1L).build();
+        final var agendaDomain = AgendaDomain.builder().id(UUID.randomUUID()).build();
         when(agendaUseCase.getAllRegisteredGuidelines(0,24,"createdAt", "DESC")).thenReturn(new PageImpl(List.of(agendaDomain)));
         when(agendaMapper.toDTO(agendaDomain)).thenReturn(new AgendaOutDTO(agendaDomain.getId(), agendaDomain.getTitle(), agendaDomain.getCreatedAt()));
         mockMvc.perform(get("/v1/agendas")

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
 
 @RestController
@@ -30,7 +31,7 @@ public class VoteControllerImpl implements VoteController {
     @Override
     @GetMapping ( "total-votes/{agenda_id}/agenda-id" )
     @ResponseStatus ( HttpStatus.OK )
-    public VoteResultOutDTO totalVotes(@PathVariable ( "agenda_id" ) @NotNull final Long agendaId) {
+    public VoteResultOutDTO totalVotes(@PathVariable ( "agenda_id" ) @NotNull final UUID agendaId) {
         return voteMapper.toDTO(voteUseCase.resultOfTheVoteOnTheAgenda(agendaId));
     }
 }

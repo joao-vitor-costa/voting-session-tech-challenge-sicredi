@@ -1,16 +1,16 @@
 package com.joao.core.domain;
 
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Getter
 @Builder(toBuilder = true)
 public class AgendaDomain {
 
-    private Long id;
+    private UUID id;
 
     private String title;
 

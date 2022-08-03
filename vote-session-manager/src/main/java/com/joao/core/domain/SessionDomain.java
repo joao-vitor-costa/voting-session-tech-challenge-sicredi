@@ -4,11 +4,12 @@ import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Builder
 @Getter
 public class SessionDomain {
-    private Long id;
+    private UUID id;
     private LocalDateTime closeDate;
 
     private LocalDateTime createdAt;

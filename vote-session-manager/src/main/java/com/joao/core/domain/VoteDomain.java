@@ -5,12 +5,13 @@ import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Builder
 @Getter
 public class VoteDomain {
 
-    private Long id;
+    private UUID id;
 
     private String associateId;
 

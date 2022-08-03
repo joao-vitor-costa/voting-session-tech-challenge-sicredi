@@ -15,6 +15,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.UUID;
+
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -38,7 +40,8 @@ class VoteControllerImplTest {
 
     @Test
     void should_give_successful_return_the_vote() throws Exception {
-        var voteInDTO = new VoteInDTO("46521623-8d87-4774-b84e-e24ddd898828",1L, VoteDecisionEnumeration.SIM);
+        var voteInDTO = new VoteInDTO("46521623-8d87-4774-b84e-e24ddd898828", UUID.randomUUID(), VoteDecisionEnumeration.SIM);
+
         mockMvc.perform(post("/v1/votes")
                         .contentType(APPLICATION_JSON_VALUE)
                         .content(objectMapper.writeValueAsString(voteInDTO)))

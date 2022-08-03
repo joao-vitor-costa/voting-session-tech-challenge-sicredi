@@ -1,0 +1,5 @@
+ALTER TABLE agenda ADD CONSTRAINT FK_AGENDA_ON_SESSION_ENTITY FOREIGN KEY (session_entity_id) REFERENCES session (id);
+
+ALTER TABLE vote ADD CONSTRAINT uc_vote_associate UNIQUE (associate_id);
+
+ALTER TABLE vote ADD CONSTRAINT FK_VOTE_ON_AGENDA_ENTITY FOREIGN KEY (agenda_entity_id) REFERENCES agenda (id);

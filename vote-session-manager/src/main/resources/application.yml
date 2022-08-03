@@ -2,19 +2,23 @@ server.port: 8089
 spring:
   application:
     name: vote-session-manager
-
+  flyway:
+    url: jdbc:mysql://localhost:3306/vote_session_manager?createDatabaseIfNotExist=true
+    user: root
+    password: root
+    schemas:
+      - vote_session_manager
   datasource:
     url: jdbc:mysql://localhost:3306/vote_session_manager
     username: root
     password: root
     continue-on-error: true
     driver-class-name: com.mysql.cj.jdbc.Driver
-
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       ddl-auto: none
-    show-sql: true
+    show-sql: false
     open-in-view: false
 
 spring-doc:

@@ -5,9 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Getter
 @Builder
@@ -16,10 +19,12 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "vote")
 public class VoteEntity {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @Type (type = "uuid-char")
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator (name = "uuid2", strategy = "uuid2")
+    private UUID id;
 
     @Column(name = "associate_id", unique = true, nullable = false)
     private String associateId;

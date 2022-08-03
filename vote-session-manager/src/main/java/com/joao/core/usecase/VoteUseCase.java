@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.UUID;
 
 import static com.joao.core.enumeration.ExceptionCodeEnumeration.NOT_ENABLED_VOTE;
 import static com.joao.core.enumeration.ExceptionCodeEnumeration.SECOND_ATTEMPT_VOTE;
@@ -30,7 +31,7 @@ public class VoteUseCase {
     private final VoteGateway voteGateway;
 
     @Transactional ( rollbackOn = Exception.class )
-    public void voteOnTheAgenda(final String associateId, final Long agendaId, final VoteDecisionEnumeration voteDecisionEnumeration) {
+    public void voteOnTheAgenda(final String associateId, final UUID agendaId, final VoteDecisionEnumeration voteDecisionEnumeration) {
         log.info("searching for agenda information");
         final var agendaDomain = agendaUseCase.searchForAnAgenda(agendaId);
         log.info("validation if a session was created on the agenda");
@@ -56,7 +57,7 @@ public class VoteUseCase {
         log.info("successful vote");
     }
 
-    public VoteResultDomain resultOfTheVoteOnTheAgenda(final Long agendaId) {
+    public VoteResultDomain resultOfTheVoteOnTheAgenda(final UUID agendaId) {
         log.info("searching for agenda information");
         final var agendaDomain = agendaUseCase.searchForAnAgenda(agendaId);
         log.info("validation if a session was created on the agenda");
