@@ -23,3 +23,9 @@ Aplicação para gerenciar o registro do associado, onde é possivel cadastrar n
 ```
  docker-compose up -d
 ```
+
+## Utilizando a aplicação via swagger
+Acesse em um browser a url http://localhost:8080/swagger-ui/index.html
+
+## Health Check
+Acesse em um browser a url http://localhost:8080/actuator/health
