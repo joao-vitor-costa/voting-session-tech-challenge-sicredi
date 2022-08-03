@@ -18,8 +18,9 @@
         <java.version>17</java.version>
         <org.springdoc>1.6.9</org.springdoc>
         <org.projectlombok.version>1.18.24</org.projectlombok.version>
-        <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
+        <org.mapstruct.version>1.5.2.Final</org.mapstruct.version>
         <spring-cloud.version>2021.0.3</spring-cloud.version>
+        <org.jeasy>5.0.0</org.jeasy>
     </properties>
 
     <dependencyManagement>
@@ -36,6 +37,10 @@
 
     <dependencies>
         <!-- Spring Framework Dependencies-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
@@ -84,6 +89,17 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-inline</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>

@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 
 
 @RestController
-@RequestMapping ( "v1/votes" )
+@RequestMapping ( "/v1/votes" )
 @RequiredArgsConstructor
 public class VoteControllerImpl implements VoteController {
 

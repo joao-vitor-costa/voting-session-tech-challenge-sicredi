@@ -36,7 +36,7 @@ public class VoteUseCase {
         log.info("validation if a session was created on the agenda");
         agendaUseCase.validateIfYouHaveSessionCreatedOnTheAgenda(agendaDomain);
         log.info("validating if open session on the agenda");
-        sessionUseCase.validateIfAgendaIsOpenSession(agendaDomain.getSessionDomain());
+        sessionUseCase.validateIfAgendaIsCloseSession(agendaDomain.getSessionDomain());
         log.info("validating if the member has already voted on the agenda");
         validateIfAssociateVotedOnTheAgenda(associateId, agendaDomain);
         log.info("getting the member's CPF");
@@ -59,6 +59,11 @@ public class VoteUseCase {
     public VoteResultDomain resultOfTheVoteOnTheAgenda(final Long agendaId) {
         log.info("searching for agenda information");
         final var agendaDomain = agendaUseCase.searchForAnAgenda(agendaId);
+        log.info("validation if a session was created on the agenda");
+        agendaUseCase.validateIfYouHaveSessionCreatedOnTheAgenda(agendaDomain);
+        log.info("validate if the session is closed");
+        sessionUseCase.validateIfAgendaIsOpenSession(agendaDomain.getSessionDomain());
+        log.info("getting the result of the vote");
         return voteGateway.getResult(agendaDomain);
     }
 
@@ -68,7 +73,7 @@ public class VoteUseCase {
         }
     }
 
-    public void validateIfAssociateVotedOnTheAgenda(final String associateId, final AgendaDomain agendaDomain) {
+    private void validateIfAssociateVotedOnTheAgenda(final String associateId, final AgendaDomain agendaDomain) {
         final var voteDomains = voteGateway.findByAgenda(agendaDomain);
         if (voteDomains.stream().anyMatch(voteDomain -> Objects.equals(voteDomain.getAssociateId(), associateId))) {
             throw new SecondVoteAttemptException(SECOND_ATTEMPT_VOTE);

@@ -12,8 +12,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-import static com.joao.core.enumeration.ExceptionCodeEnumeration.AGENDA_ALREADY_HAS_A_SESSION;
-import static com.joao.core.enumeration.ExceptionCodeEnumeration.SESSION_CLOSED_FOR_VOTING;
+import static com.joao.core.enumeration.ExceptionCodeEnumeration.*;
 
 @Component
 @Slf4j
@@ -43,9 +42,15 @@ public class SessionUseCase {
 
     }
 
-    public void validateIfAgendaIsOpenSession(final SessionDomain sessionDomain) {
+    public void validateIfAgendaIsCloseSession(final SessionDomain sessionDomain) {
         if (!sessionDomain.isCloseSession()) {
-            throw new CloseSessionException(SESSION_CLOSED_FOR_VOTING);
+            throw new CloseSessionException(SESSION_CLOSED);
+        }
+    }
+
+    public void validateIfAgendaIsOpenSession(final SessionDomain sessionDomain) {
+        if (sessionDomain.isOpenSession()) {
+            throw new OpenSessionException(SESSION_OPEN);
         }
     }
 
