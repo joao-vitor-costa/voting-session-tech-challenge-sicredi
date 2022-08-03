@@ -17,23 +17,23 @@ import java.util.UUID;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Entity
-@Table(name = "vote")
+@Table ( name = "vote" )
 public class VoteEntity {
 
     @Id
-    @Type (type = "uuid-char")
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator (name = "uuid2", strategy = "uuid2")
+    @Type ( type = "uuid-char" )
+    @GeneratedValue ( generator = "uuid2" )
+    @GenericGenerator ( name = "uuid2", strategy = "uuid2" )
     private UUID id;
 
-    @Column(name = "associate_id", unique = true, nullable = false)
+    @Column ( name = "associate_id", unique = true, nullable = false )
     private String associateId;
 
-    @Column(name = "created_at", nullable = false)
+    @Column ( name = "created_at", nullable = false )
     private LocalDateTime createdAt;
 
     @Enumerated
-    @Column(name = "vote_decision", nullable = false)
+    @Column ( name = "vote_decision", nullable = false )
     private VoteDecisionEnumeration voteDecisionEnumeration;
 
     @ManyToOne

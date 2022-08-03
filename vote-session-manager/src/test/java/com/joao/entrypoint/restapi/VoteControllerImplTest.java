@@ -2,9 +2,7 @@ package com.joao.entrypoint.restapi;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.joao.core.enumeration.VoteDecisionEnumeration;
-import com.joao.core.usecase.SessionUseCase;
 import com.joao.core.usecase.VoteUseCase;
-import com.joao.dataprovider.dto.OpenVotingSessionInDTO;
 import com.joao.dataprovider.dto.VoteInDTO;
 import com.joao.dataprovider.mapper.VoteMapper;
 import org.junit.jupiter.api.Test;
@@ -18,8 +16,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.UUID;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -31,10 +29,10 @@ class VoteControllerImplTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private  VoteUseCase voteUseCase;
+    private VoteUseCase voteUseCase;
 
     @MockBean
-    private  VoteMapper voteMapper;
+    private VoteMapper voteMapper;
     @Autowired
     private ObjectMapper objectMapper;
 

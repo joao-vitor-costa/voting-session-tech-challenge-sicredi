@@ -10,9 +10,10 @@ import org.mapstruct.Mapping;
 @Mapper ( componentModel = "spring" )
 public interface VoteMapper {
     VoteResultOutDTO toDTO(VoteResultDomain voteResultDomain);
-    @Mapping (target = "agendaEntity", source = "agendaDomain")
+
+    @Mapping ( target = "agendaEntity", source = "agendaDomain" )
     VoteEntity toEntity(VoteDomain voteDomain);
 
-    @Mapping (target = "agendaDomain", source = "agendaEntity")
+    @Mapping ( target = "agendaDomain", source = "agendaEntity" )
     VoteDomain toDomain(VoteEntity voteEntity);
 }

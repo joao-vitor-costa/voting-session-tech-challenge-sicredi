@@ -17,7 +17,6 @@ import java.util.UUID;
 import static com.joao.core.enumeration.ExceptionCodeEnumeration.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
 @ExtendWith ( MockitoExtension.class )

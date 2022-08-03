@@ -16,18 +16,18 @@ import java.util.UUID;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Entity
-@Table(name = "session")
+@Table ( name = "session" )
 public class SessionEntity {
     @Id
-    @Type (type = "uuid-char")
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator (name = "uuid2", strategy = "uuid2")
+    @Type ( type = "uuid-char" )
+    @GeneratedValue ( generator = "uuid2" )
+    @GenericGenerator ( name = "uuid2", strategy = "uuid2" )
     private UUID id;
 
-    @Column(name = "close_date", nullable = false)
+    @Column ( name = "close_date", nullable = false )
     private LocalDateTime closeDate;
 
-    @Column(name = "created_at", nullable = false)
+    @Column ( name = "created_at", nullable = false )
     private LocalDateTime createdAt;
 
 

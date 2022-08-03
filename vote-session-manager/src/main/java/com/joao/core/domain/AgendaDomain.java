@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
-@Builder(toBuilder = true)
+@Builder ( toBuilder = true )
 public class AgendaDomain {
 
     private UUID id;

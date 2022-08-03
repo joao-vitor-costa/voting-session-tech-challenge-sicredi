@@ -12,14 +12,14 @@ import java.util.TimeZone;
 @EnableFeignClients
 public class VoteSessionManagerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(VoteSessionManagerApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(VoteSessionManagerApplication.class, args);
+    }
 
-	@PostConstruct
-	public void init() {
-		TimeZone.setDefault(TimeZone.getTimeZone("America/Sao_Paulo"));
-		Locale.setDefault(new Locale("pt", "BR"));
-	}
+    @PostConstruct
+    public void init() {
+        TimeZone.setDefault(TimeZone.getTimeZone("America/Sao_Paulo"));
+        Locale.setDefault(new Locale("pt", "BR"));
+    }
 
 }

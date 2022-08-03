@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping ("/v1/sessions")
+@RequestMapping ( "/v1/sessions" )
 @RequiredArgsConstructor
 public class SessionControllerImpl implements SessionController {
 
@@ -17,7 +17,7 @@ public class SessionControllerImpl implements SessionController {
 
     @Override
     @PostMapping
-    @ResponseStatus (HttpStatus.NO_CONTENT)
+    @ResponseStatus ( HttpStatus.NO_CONTENT )
     public void openVotingSession(@RequestBody @Valid final OpenVotingSessionInDTO openVotingSessionInDTO) {
         sessionUseCase.openAVotingSessionOnAnAgenda(openVotingSessionInDTO.agendaId(), openVotingSessionInDTO.sessionTime());
     }

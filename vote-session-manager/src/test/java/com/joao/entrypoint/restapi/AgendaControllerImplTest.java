@@ -55,7 +55,7 @@ class AgendaControllerImplTest {
     @Test
     void must_list_the_guidelines() throws Exception {
         final var agendaDomain = AgendaDomain.builder().id(UUID.randomUUID()).build();
-        when(agendaUseCase.getAllRegisteredGuidelines(0,24,"createdAt", "DESC")).thenReturn(new PageImpl(List.of(agendaDomain)));
+        when(agendaUseCase.getAllRegisteredGuidelines(0, 24, "createdAt", "DESC")).thenReturn(new PageImpl(List.of(agendaDomain)));
         when(agendaMapper.toDTO(agendaDomain)).thenReturn(new AgendaOutDTO(agendaDomain.getId(), agendaDomain.getTitle(), agendaDomain.getCreatedAt()));
         mockMvc.perform(get("/v1/agendas")
                         .param("page", "0")

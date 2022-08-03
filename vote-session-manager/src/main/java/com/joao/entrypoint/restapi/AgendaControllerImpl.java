@@ -21,18 +21,18 @@ public class AgendaControllerImpl implements AgendaController {
 
     @Override
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus ( HttpStatus.CREATED )
     public void create(@RequestBody @Valid final AgendaInDTO agendaInDTO) {
         agendaUseCase.newAgenda(agendaMapper.toDomain(agendaInDTO));
     }
 
     @Override
     @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public Page<AgendaOutDTO> findPage(@RequestParam(value = "page", defaultValue = "0") final Integer page,
-                                       @RequestParam(value = "linesPerPage", defaultValue = "24") final Integer linesPerPage,
-                                       @RequestParam(value = "orderBy", defaultValue = "createdAt") final String orderBy,
-                                       @RequestParam(value = "direction", defaultValue = "DESC") final String direction) {
+    @ResponseStatus ( HttpStatus.OK )
+    public Page<AgendaOutDTO> findPage(@RequestParam ( value = "page", defaultValue = "0" ) final Integer page,
+                                       @RequestParam ( value = "linesPerPage", defaultValue = "24" ) final Integer linesPerPage,
+                                       @RequestParam ( value = "orderBy", defaultValue = "createdAt" ) final String orderBy,
+                                       @RequestParam ( value = "direction", defaultValue = "DESC" ) final String direction) {
         return agendaUseCase.getAllRegisteredGuidelines(page, linesPerPage, orderBy, direction)
                 .map(agendaMapper::toDTO);
 
