@@ -1,7 +1,7 @@
 package com.joao.core.usecase;
 
 import com.joao.core.domain.AssociateDomain;
-import com.joao.core.gateway.CreateGateway;
+import com.joao.core.gateway.AssociateGateway;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -11,16 +11,16 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class RegistrationManagerUseCase {
 
-    private final CreateGateway createGateway;
+    private final AssociateGateway associateGateway;
 
 
     public AssociateDomain addNewAssociate(final AssociateDomain associateDomain) {
         log.info("requesting membership creation");
-        return createGateway.create(associateDomain);
+        return associateGateway.create(associateDomain);
     }
 
     public AssociateDomain searchAssociatedByUniqueIdentifier(final String id) {
         log.info("looking for associate that has the id={}", id);
-        return createGateway.findById(id);
+        return associateGateway.findById(id);
     }
 }

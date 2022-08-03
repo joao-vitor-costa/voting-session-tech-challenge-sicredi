@@ -2,7 +2,7 @@ package com.joao.core.gateway;
 
 import com.joao.core.domain.AssociateDomain;
 
-public interface CreateGateway {
+public interface AssociateGateway {
 
     AssociateDomain create(AssociateDomain associateDomain);
 
