@@ -6,6 +6,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 
 
-@Document(collection = "associate")
-public record AssociateEntity(String id, String name, @Indexed(unique = true) Long cpf, LocalDateTime createdAt) {
+@Document ( collection = "associate" )
+public record AssociateEntity(String id, String name, @Indexed ( unique = true ) Long cpf, LocalDateTime createdAt) {
 }

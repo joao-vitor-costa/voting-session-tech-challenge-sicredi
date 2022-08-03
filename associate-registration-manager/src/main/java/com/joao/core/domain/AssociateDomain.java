@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 
 @Getter
-@Builder(toBuilder = true)
+@Builder ( toBuilder = true )
 public class AssociateDomain {
 
     private String id;
