@@ -17,7 +17,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-class VoteGatewayGateway implements VoteGateway {
+class VoteGatewayImpl implements VoteGateway {
 
     private final VoteRepository voteRepository;
     private final VoteMapper voteMapper;
@@ -31,7 +31,7 @@ class VoteGatewayGateway implements VoteGateway {
 
     @Override
     public List<VoteDomain> findByAgenda(AgendaDomain agendaDomain) {
-        return voteRepository.findByAgendaEntity(agendaMapper.ToEntity(agendaDomain))
+        return voteRepository.findByAgendaEntity(agendaMapper.toEntity(agendaDomain))
                 .stream()
                 .map(voteMapper::toDomain)
                 .toList();
@@ -52,7 +52,7 @@ class VoteGatewayGateway implements VoteGateway {
                 .build();
     }
 
-    VoteResultEnumeration getDecision(final Long totalNo, final Long totalYes) {
+    private VoteResultEnumeration getDecision(final Long totalNo, final Long totalYes) {
         return voteResultStrategies.stream()
                 .filter(strategy -> strategy.toAccept(totalNo, totalYes))
                 .map(VoteResultStrategy::getResult)
