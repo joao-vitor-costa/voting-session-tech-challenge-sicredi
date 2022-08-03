@@ -56,5 +56,19 @@ public class ExceptionHandlerController {
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(standardError);
     }
 
+    @ExceptionHandler ( BadRequestException.class )
+    public ResponseEntity<StandardErrorOutDTO> badRequest(BadRequestException exception, HttpServletRequest request) {
+        final var standardError = new StandardErrorOutDTO(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(),
+                exception.getErrorCode(), exception.getMessage(), request.getRequestURI(), request.getMethod());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(standardError);
+    }
+
+    @ExceptionHandler ( OpenSessionException.class )
+    public ResponseEntity<StandardErrorOutDTO> openSession(OpenSessionException exception, HttpServletRequest request) {
+        final var standardError = new StandardErrorOutDTO(System.currentTimeMillis(), HttpStatus.UNPROCESSABLE_ENTITY.value(),
+                exception.getErrorCode(), exception.getMessage(), request.getRequestURI(), request.getMethod());
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(standardError);
+    }
+
 
 }

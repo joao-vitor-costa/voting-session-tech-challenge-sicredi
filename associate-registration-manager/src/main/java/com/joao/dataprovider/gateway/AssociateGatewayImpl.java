@@ -2,7 +2,7 @@ package com.joao.dataprovider.gateway;
 
 import com.joao.core.domain.AssociateDomain;
 import com.joao.core.exception.NotFoundException;
-import com.joao.core.gateway.CreateGateway;
+import com.joao.core.gateway.AssociateGateway;
 import com.joao.dataprovider.mapper.AssociateMapper;
 import com.joao.dataprovider.repository.AssociateRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ import static com.joao.core.enumeration.ExceptionCode.ASSOCIATE_NOT_FOUND;
 
 @Service
 @RequiredArgsConstructor
-class CreateGatewayImpl implements CreateGateway {
+class AssociateGatewayImpl implements AssociateGateway {
 
     private final AssociateRepository associateRepository;
     private final AssociateMapper associateMapper;

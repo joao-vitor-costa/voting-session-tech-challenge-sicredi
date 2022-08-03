@@ -13,14 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 @RestControllerAdvice
 public class ExceptionHandlerController {
 
-    @ExceptionHandler(MongoWriteException.class)
+    @ExceptionHandler ( MongoWriteException.class )
     public ResponseEntity<StandardErrorOutDTO> mongoWrite(MongoWriteException exception, HttpServletRequest request) {
         StandardErrorOutDTO standardErrorOutDTO = new StandardErrorOutDTO(System.currentTimeMillis(), HttpStatus.INTERNAL_SERVER_ERROR.value(),
                 Integer.toString(exception.getError().getCode()), exception.getMessage(), request.getRequestURI(), request.getMethod());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(standardErrorOutDTO);
     }
 
-    @ExceptionHandler(NotFoundException.class)
+    @ExceptionHandler ( NotFoundException.class )
     public ResponseEntity<StandardErrorOutDTO> notFound(NotFoundException exception, HttpServletRequest request) {
         final var standardError = new StandardErrorOutDTO(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(),
                 exception.getErrorCode(), exception.getMessage(), request.getRequestURI(), request.getMethod());

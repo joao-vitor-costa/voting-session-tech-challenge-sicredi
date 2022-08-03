@@ -6,7 +6,7 @@ import com.joao.dataprovider.dto.AssociateOutDTO;
 import com.joao.dataprovider.entity.AssociateEntity;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring")
+@Mapper ( componentModel = "spring" )
 public interface AssociateMapper {
 
     AssociateOutDTO toDTO(final AssociateDomain associateDomain);

@@ -16,4 +16,8 @@ public class SessionDomain {
     public boolean isCloseSession() {
         return this.closeDate.isAfter(LocalDateTime.now());
     }
+
+    public boolean isOpenSession() {
+        return this.closeDate.isBefore(LocalDateTime.now());
+    }
 }

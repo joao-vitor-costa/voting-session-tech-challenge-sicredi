@@ -3,9 +3,11 @@ package com.joao.core.domain;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
+
 
 @Getter
-@Builder
+@Builder ( toBuilder = true )
 public class AssociateDomain {
 
     private String id;
@@ -13,5 +15,7 @@ public class AssociateDomain {
     private String name;
 
     private Long cpf;
+
+    private LocalDateTime createdAt;
 
 }

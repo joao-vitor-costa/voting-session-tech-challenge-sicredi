@@ -14,7 +14,7 @@ public interface AgendaMapper {
     AgendaOutDTO toDTO(AgendaDomain agendaDomain);
 
     @Mapping ( target = "sessionEntity", source = "sessionDomain" )
-    AgendaEntity ToEntity(AgendaDomain agendaDomain);
+    AgendaEntity toEntity(AgendaDomain agendaDomain);
 
     @Mapping ( target = "sessionDomain", source = "sessionEntity" )
     AgendaDomain toDomain(AgendaEntity agendaEntity);

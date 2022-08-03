@@ -3,7 +3,6 @@ package com.joao.core.usecase;
 import com.joao.core.domain.AgendaDomain;
 import com.joao.core.domain.SessionDomain;
 import com.joao.core.exception.NotFoundException;
-import com.joao.core.exception.SecondVoteAttemptException;
 import com.joao.core.exception.SessionNotCreatedException;
 import com.joao.core.gateway.AgendaGateway;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +15,8 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-import static com.joao.core.enumeration.ExceptionCodeEnumeration.*;
+import static com.joao.core.enumeration.ExceptionCodeEnumeration.AGENDA_NOT_FOUND;
+import static com.joao.core.enumeration.ExceptionCodeEnumeration.SESSION_NOT_CREATED;
 
 @Component
 @RequiredArgsConstructor
@@ -62,13 +62,5 @@ public class AgendaUseCase {
             throw new SessionNotCreatedException(SESSION_NOT_CREATED);
         }
 
-    }
-
-    public void addVote(AgendaDomain agendaDomain) {
-        log.info("add new vote agenda");
-        agendaGateway.save(agendaDomain.toBuilder()
-                .createdAt(LocalDateTime.now())
-                .build());
-        log.info("add vote successfully");
     }
 }

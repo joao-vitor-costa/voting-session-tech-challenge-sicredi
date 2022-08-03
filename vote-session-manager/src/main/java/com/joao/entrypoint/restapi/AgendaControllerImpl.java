@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping ( "v1/agendas" )
+@RequestMapping ( "/v1/agendas" )
 @RequiredArgsConstructor
 public class AgendaControllerImpl implements AgendaController {
 

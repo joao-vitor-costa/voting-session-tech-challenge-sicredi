@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("v1/associates")
+@RequestMapping ( "/v1/associates" )
 @RequiredArgsConstructor
 public class AssociateControllerImpl implements AssociateController {
 
@@ -20,15 +20,15 @@ public class AssociateControllerImpl implements AssociateController {
 
     @Override
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus ( HttpStatus.CREATED )
     public AssociateOutDTO create(@RequestBody @Valid final AssociateInDTO associateDTO) {
         return associateMapper.toDTO(registrationManagerUseCase.addNewAssociate(associateMapper.toDomain(associateDTO)));
     }
 
     @Override
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/{id}")
-    public AssociateOutDTO findById(@PathVariable("id") final String id) {
+    @ResponseStatus ( HttpStatus.OK )
+    @GetMapping ( "/{id}" )
+    public AssociateOutDTO findById(@PathVariable ( "id" ) final String id) {
         return associateMapper.toDTO(registrationManagerUseCase.searchAssociatedByUniqueIdentifier(id));
     }
 }
