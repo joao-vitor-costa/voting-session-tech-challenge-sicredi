@@ -14,6 +14,14 @@
     <name>associate-registration-manager</name>
     <description>associate registration management</description>
 
+    <developers>
+        <developer>
+            <name>Joao Vitor Costa</name>
+            <email>dev.es.costa@gmail.com</email>
+            <timezone>GMT-3</timezone>
+        </developer>
+    </developers>
+
     <properties>
         <java.version>17</java.version>
         <org.springdoc>1.6.9</org.springdoc>
