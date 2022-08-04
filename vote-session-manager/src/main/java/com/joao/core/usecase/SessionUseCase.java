@@ -50,7 +50,7 @@ public class SessionUseCase {
     }
 
     public void validateIfAgendaIsOpenSession(final SessionDomain sessionDomain) {
-        if (sessionDomain.isOpenSession()) {
+        if (!sessionDomain.isOpenSession()) {
             throw new OpenSessionException(SESSION_OPEN);
         }
     }
