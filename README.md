@@ -15,10 +15,6 @@ Para este projeto utilizamos as camadas core, entrypoint e dataprovider, portant
 
 ## Tecnologias 
 
-Para este projeto é utilizado Java 17 e Spring boot e maven para gerenciar as dependencias. Para o banco de dados é usado banco de dados relacional para o [ms-vote-session-manager](https://github.com/joao-vitor-costa/voting-session-tech-challenge/blob/main/associate-registration-manager/README.md), esse serviço possui banco relacional devido o relacionamento que tem entre as entridades pauta, sessão e voto, já o  [ms-associate-registration-manager](https://github.com/joao-vitor-costa/voting-session-tech-challenge/blob/main/associate-registration-manager/README.md) é utilizado um banco de dados não relacional, pois o serviço que gerencia o associado só tem a entidade associado, além disso foi tomado essa decisão também devido o volume de associado que uma cooperativa pode ter, portando com o banco não relacional é possivel ter uma melhor perfomance. Para mais informaçõe deve consultar o README.md de cada serviço.
-
-## Tecnologias 
-
 Para este projeto é utilizado Java 17 e Spring boot e maven para gerenciar as dependências. Para o banco de dados é usado banco de dados relacional para o [ms-vote-session-manager](https://github.com/joao-vitor-costa/voting-session-tech-challenge/blob/main/associate-registration-manager/README.md), esse serviço possui banco relacional devido o relacionamento que tem entre as entridades pauta, sessão e voto, já o  [ms-associate-registration-manager](https://github.com/joao-vitor-costa/voting-session-tech-challenge/blob/main/associate-registration-manager/README.md) é utilizado um banco de dados não relacional, pois o serviço que gerencia o associado só tem a entidade associado, além disso foi tomado essa decisão também devido o volume de associado que uma cooperativa pode ter, portando com o banco não relacional é possivel ter uma melhor perfomance. Para mais informações deve consultar o README.md de cada serviço.
 
 ### Requisitos do sistema
@@ -98,7 +94,7 @@ Corpo da requisição:
 }
 ```
 
-### Escolher uma pauta para votar
+#### Escolher uma pauta para votar
 Podemos escolher uma pauta para votar utilizando uma listagem de pautas, essa listagem utiliza paginação com isso pode se ordenar as pautas e trazer a quantidade por página como se desejar.
 Requisição para obter a lista de pautas:
 ```
