@@ -6,7 +6,7 @@
 Aplicação para gerenciar uma sessão de votação , onde podemos criar uma pauta de votação e lista as pautas criadas e para realizar uma votação é preciso abrir uma sessão de votação em cima de uma pauta, a sessão por default terá um tempo de 1 minuto, mas caso deseja ter um tempo maior é possível configurar o tempo da sessão no ato da criação. Para poder votar é preciso ter o id do associado que é gerado no [ms-associate-registration-manager]( https://github.com/joao-vitor-costa/voting-session-tech-challenge/tree/main/associate-registration-manager) e também é preciso do id da pauta, com isso pode ser efetuado uma votação, na votação é validado se o associado pe hapto a votar, apoós a votação acabar é possivel obter o resultado de um votação passando o id da pauta que foi votada.
 
 ## Tecnologias  
-- Java 17
+- Java 19
 - Spring Boot 2.7.2
 - Spring Cloud
 - Maven 3.8.1
