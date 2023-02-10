@@ -6,7 +6,7 @@
 Aplicação para gerenciar o registro do associado, onde é possivel cadastrar novos associados ou bucar um associado por um id unico.
 
 ## Tecnologias  
-- Java 17
+- Java 19
 - Spring Boot 2.7.2
 - Spring Cloud
 - Maven 3.8.1
