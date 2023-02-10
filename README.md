@@ -7,7 +7,7 @@ O Sistema de votação de pauta consiste em fornecer um ecossistema onde um asso
 
 ## Arquitetura de Software 
 
-Cada aplicação foi desenvoldida utilizando os conceitos de arquitetura limpa, portando o [ms-associate-registration-manager](https://github.com/joao-vitor-costa/voting-session-tech-challenge/blob/main/associate-registration-manager/README.md) e o [ms-vote-session-manager](https://github.com/joao-vitor-costa/voting-session-tech-challenge/blob/main/associate-registration-manager/README.md) possuem a organização de pacotes se embasando no conceito de arquituta limpa. Para exemplicar melhor, segue uma imagem que mostra as camadas utilidas na arquitetura limpa.
+Cada aplicação foi desenvoldida utilizando os conceitos de arquitetura limpa, portando o [ms-associate-registration-manager](https://github.com/joao-vitor-costa/voting-session-tech-challenge/blob/main/associate-registration-manager/README.md) e o [ms-vote-session-manager](https://github.com/joao-vitor-costa/voting-session-tech-challenge/blob/main/vote-session-manager/README.md) possuem a organização de pacotes se embasando no conceito de arquituta limpa. Para exemplicar melhor, segue uma imagem que mostra as camadas utilidas na arquitetura limpa.
 
 ![clean_architecture](https://user-images.githubusercontent.com/23365048/182738578-060f0724-92ca-463f-85e8-23c2bb463fcf.png)
 
